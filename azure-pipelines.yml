@@ -1,14 +1,8 @@
 # Docker
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'Azure for Students(771d0469-7326-4a9d-b66a-01dca23fee15)'
-    appType: 'webAppLinux'
-    appName: 'cc5cicd'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
 # Build a Docker image
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
-- trigger:
+trigger:
 - main
 
 resources:
