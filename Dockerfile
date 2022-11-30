@@ -4,4 +4,4 @@ WORKDIR /test-flask-cloud-run-main
 RUN pip install -r requirements.txt
 COPY . /test-flask-cloud-run-main
 ENTRYPOINT [ "python" ]
-CMD ["app.py" ]
+CMD ["hello.py" ]
