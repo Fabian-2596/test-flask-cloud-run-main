@@ -22,15 +22,15 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v1
       with:
-        registry: https://mcr.microsoft.com/
-        username: ${{ secrets.AzureAppService_ContainerUsername_e4608279fc814a70b6d9fb8611d6a2fb }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_ea8cceb12e244b9299bfd6138731d884 }}
+        registry: https://cccdcireg.azurecr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_4714e52de6354a8cb216ca4d1239d00d }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_b34bf6bdbb7745ae80c27b3eb098fc84 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_e4608279fc814a70b6d9fb8611d6a2fb }}/appsvc/staticsite:${{ github.sha }}
+        tags: cccdcireg.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_4714e52de6354a8cb216ca4d1239d00d }}/fabiantestflaskcloudrunmain:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'cccdci'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_10e0c537eea34aaaaa975588cb7ee45d }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_e4608279fc814a70b6d9fb8611d6a2fb }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_4758eed0850145f4bc2b19cb135c0b3f }}
+        images: 'cccdcireg.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_4714e52de6354a8cb216ca4d1239d00d }}/fabiantestflaskcloudrunmain:${{ github.sha }}'
